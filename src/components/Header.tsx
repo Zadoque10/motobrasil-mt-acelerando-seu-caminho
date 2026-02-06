@@ -27,7 +27,6 @@ export function Header() {
           <a href="#inicio" className="flex items-center gap-1">
             <span className="font-display text-2xl md:text-3xl text-brasil-green tracking-wider">MOTO</span>
             <span className="font-display text-2xl md:text-3xl text-brasil-yellow tracking-wider">BRASIL</span>
-            <span className="font-display text-2xl md:text-3xl text-brasil-blue tracking-wider">MT</span>
           </a>
 
           {/* Desktop Nav */}
