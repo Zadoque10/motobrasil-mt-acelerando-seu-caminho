@@ -8,7 +8,7 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Endereço",
-    lines: ["Av. Historiador Rubens de Mendonça", "Cuiabá - MT, 78008-000"],
+    lines: ["Av. Gen. Mello, 180 - Dom Aquino", "Cuiabá - MT, 78015-300"],
   },
   {
     icon: Phone,
@@ -83,7 +83,7 @@ export function ContactSection() {
             className="rounded-xl overflow-hidden border border-border/50 h-80 lg:h-auto"
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3843.003!2d-56.0974!3d-15.5989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTXCsDM1JzU2LjAiUyA1NsKwMDUnNTAuNiJX!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3843.5!2d-56.0964!3d-15.5936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x939db1b5a5e4c7d%3A0x0!2sAv.+Gen.+Mello%2C+180+-+Dom+Aquino%2C+Cuiab%C3%A1+-+MT!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
               width="100%"
               height="100%"
               style={{ border: 0, minHeight: "320px" }}

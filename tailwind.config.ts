@@ -61,6 +61,11 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        brasil: {
+          green: "hsl(var(--brasil-green))",
+          yellow: "hsl(var(--brasil-yellow))",
+          blue: "hsl(var(--brasil-blue))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
