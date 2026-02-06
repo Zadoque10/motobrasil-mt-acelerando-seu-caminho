@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import logo from "@/assets/logo.jpg";
 
 const navLinks = [
   { label: "Início", href: "#inicio" },
@@ -24,9 +25,8 @@ export function Header() {
 
       <div className="bg-background/80 backdrop-blur-lg border-b border-border/50">
         <div className="container mx-auto flex items-center justify-between h-16 md:h-20 px-4">
-          <a href="#inicio" className="flex items-center gap-1">
-            <span className="font-display text-2xl md:text-3xl text-brasil-green tracking-wider">MOTO</span>
-            <span className="font-display text-2xl md:text-3xl text-brasil-yellow tracking-wider">BRASIL</span>
+          <a href="#inicio" className="flex items-center">
+            <img src={logo} alt="Moto Brasil" className="h-10 md:h-14 w-auto" />
           </a>
 
           {/* Desktop Nav */}

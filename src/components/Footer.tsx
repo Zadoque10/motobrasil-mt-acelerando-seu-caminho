@@ -1,3 +1,5 @@
+import logo from "@/assets/logo.jpg";
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -6,10 +8,9 @@ export function Footer() {
       <div className="h-1 w-full bg-gradient-brasil" />
       <div className="container mx-auto py-10 px-4">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-1">
-            <span className="font-display text-xl text-brasil-green tracking-wider">MOTO</span>
-            <span className="font-display text-xl text-brasil-yellow tracking-wider">BRASIL</span>
-          </div>
+          <a href="#inicio" className="flex items-center">
+            <img src={logo} alt="Moto Brasil" className="h-8 w-auto" />
+          </a>
           <p className="text-sm text-muted-foreground font-sans text-center">
             © {currentYear} Motobrasil MT — Todos os direitos reservados. Cuiabá-MT.
           </p>
