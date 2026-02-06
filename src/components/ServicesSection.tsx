@@ -70,7 +70,7 @@ export function ServicesSection() {
               variants={item}
               className={`group bg-gradient-card rounded-xl p-8 border transition-all duration-300 hover:-translate-y-1 ${
                 service.featured
-                  ? "border-primary/30 hover:border-primary/60 hover:glow-red"
+                  ? "border-primary/30 hover:border-primary/60 hover:glow-green"
                   : "border-border/50 hover:border-border"
               }`}
             >
