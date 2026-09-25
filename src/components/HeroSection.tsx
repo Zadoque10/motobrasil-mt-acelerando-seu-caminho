@@ -1,4 +1,4 @@
-import { ShieldCheck, Wrench, Package, ChevronDown, MapPin } from "lucide-react";
+import { ShieldCheck, Wrench, Store, ChevronDown, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 import heroBg from "@/assets/hero-bg.jpg";
 import { SITE, waLink, yearsInBusiness } from "@/lib/site";
@@ -8,7 +8,7 @@ export function HeroSection() {
   const badges = [
     { icon: ShieldCheck, label: `Desde ${SITE.foundedYear} em Cuiabá` },
     { icon: Wrench, label: "Oficina multimarcas" },
-    { icon: Package, label: "Peças e acessórios" },
+    { icon: Store, label: "2 lojas em Cuiabá" },
   ];
 
   return (
@@ -34,7 +34,7 @@ export function HeroSection() {
           className="max-w-3xl"
         >
           <span className="inline-flex items-center gap-2 text-xs md:text-sm font-semibold uppercase tracking-[0.2em] text-secondary mb-6">
-            <MapPin className="w-4 h-4" /> {SITE.address.district} · {SITE.address.city}-{SITE.address.state}
+            <MapPin className="w-4 h-4" /> Dom Aquino · Pedra 90 · {SITE.address.city}-{SITE.address.state}
           </span>
           <h1 className="heading-xl text-foreground mb-6 leading-[0.95]">
             Sua moto em <span className="text-gradient">boas mãos</span> há {yearsInBusiness()} anos

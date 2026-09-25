@@ -6,7 +6,7 @@ export function AboutSection() {
   const facts = [
     { value: String(SITE.foundedYear), label: "Ano de fundação" },
     { value: `${yearsInBusiness()}+`, label: "Anos de estrada" },
-    { value: "Multi", label: "Marcas atendidas" },
+    { value: "2", label: "Lojas em Cuiabá" },
     { value: "3 em 1", label: "Oficina, peças e aluguel" },
   ];
 
@@ -31,7 +31,8 @@ export function AboutSection() {
               </p>
               <p>
                 Começamos com peças e acessórios, crescemos com a oficina multimarcas e hoje também alugamos
-                motos. O jeito de trabalhar continua o mesmo: atendimento olho no olho, orçamento claro e
+                motos. Em 2025 abrimos a segunda loja, no Pedra 90, pra ficar mais perto de quem roda na região
+                sul. O jeito de trabalhar continua o mesmo: atendimento olho no olho, orçamento claro e
                 serviço bem feito.
               </p>
             </div>

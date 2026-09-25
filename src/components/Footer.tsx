@@ -1,6 +1,6 @@
 import { Lock } from "lucide-react";
 import logo from "@/assets/logo-white.png";
-import { SITE, telLink, waLink } from "@/lib/site";
+import { SITE, UNITS, telLink, waLink } from "@/lib/site";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -27,12 +27,14 @@ export function Footer() {
           </a>
         </div>
         <div className="text-sm space-y-2">
-          <p className="font-display text-xl text-foreground">Endereço</p>
-          <p className="text-muted-foreground">
-            {SITE.address.street} — {SITE.address.district}
-            <br />
-            {SITE.address.city}-{SITE.address.state}, {SITE.address.zip}
-          </p>
+          <p className="font-display text-xl text-foreground">Lojas</p>
+          {UNITS.map((u) => (
+            <p key={u.id} className="text-muted-foreground">
+              <span className="text-foreground/80">{u.name}</span>
+              <br />
+              {u.street} — {u.district}, {u.city}-{u.state}
+            </p>
+          ))}
           {SITE.hours.map((h) => (
             <p key={h.days} className="text-muted-foreground">
               {h.days}: {h.time}

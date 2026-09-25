@@ -1,5 +1,5 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { SITE } from "@/lib/site";
+import { UNITS } from "@/lib/site";
 
 const faqs = [
   {
@@ -19,8 +19,8 @@ const faqs = [
     a: "Temos planos diário, semanal e mensal. Modelos disponíveis, valores e documentos necessários são informados pelo WhatsApp.",
   },
   {
-    q: "Onde fica a loja?",
-    a: `${SITE.address.street}, ${SITE.address.district}, ${SITE.address.city}-${SITE.address.state}. Atendemos de segunda a sexta das 08h às 18h e sábado das 08h às 13h.`,
+    q: "Onde ficam as lojas?",
+    a: `São duas em Cuiabá: a matriz na ${UNITS[0].street}, ${UNITS[0].district}, e a filial nova na ${UNITS[1].street}, ${UNITS[1].district}.`,
   },
 ];
 
