@@ -1,95 +1,67 @@
-import { Bike, Wrench, ShoppingBag, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Bike, Wrench, Package, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 const services = [
   {
+    icon: Wrench,
+    title: "Oficina Multimarcas",
+    description:
+      "Revisão, manutenção preventiva e corretiva para motos de todas as marcas. Motor, freios, suspensão, elétrica e transmissão.",
+    href: "#oficina",
+    accent: "from-primary/25",
+  },
+  {
+    icon: Package,
+    title: "Peças e Acessórios",
+    description:
+      "Balcão com peças de reposição e acessórios para o dia a dia. Não achou? A gente procura e encomenda pra você.",
+    href: "#pecas",
+    accent: "from-secondary/25",
+  },
+  {
     icon: Bike,
     title: "Aluguel de Motos",
     description:
-      "Motos revisadas e prontas para uso urbano, turismo e trabalho. Planos diários, semanais e mensais com as melhores condições de Cuiabá.",
+      "Motos revisadas para trabalho, entregas ou uso do dia a dia, com planos que cabem na sua rotina.",
     href: "#aluguel",
-    featured: true,
-  },
-  {
-    icon: Wrench,
-    title: "Mecânica Especializada",
-    description:
-      "Manutenção preventiva e corretiva com diagnóstico preciso. Suspensão, freios, elétrica, motor e revisões completas.",
-    href: "#mecanica",
-    featured: true,
-  },
-  {
-    icon: ShoppingBag,
-    title: "Peças e Acessórios",
-    description:
-      "Peças essenciais e acessórios de qualidade para sua moto. Consulte disponibilidade e preços sob demanda.",
-    href: "#pecas",
-    featured: false,
+    accent: "from-accent/30",
   },
 ];
 
-const container = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.15 } },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
-
 export function ServicesSection() {
   return (
-    <section id="servicos" className="section-padding bg-gradient-dark">
+    <section id="servicos" className="section-padding bg-gradient-dark scroll-mt-20">
       <div className="container mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="heading-lg text-foreground mb-4">
-            Nossos <span className="text-gradient">Serviços</span>
+        <div className="max-w-2xl mb-14">
+          <span className="eyebrow">O que fazemos</span>
+          <h2 className="heading-lg text-foreground">
+            Tudo para sua moto <span className="text-gradient">num lugar só</span>
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto font-sans">
-            Soluções completas para quem precisa de mobilidade ou manutenção de qualidade em Cuiabá.
-          </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6">
           {services.map((service, i) => (
-            <motion.div
-              key={i}
-              variants={item}
-              className={`group bg-gradient-card rounded-xl p-8 border transition-all duration-300 hover:-translate-y-1 ${
-                service.featured
-                  ? "border-primary/30 hover:border-primary/60 hover:glow-green"
-                  : "border-border/50 hover:border-border"
-              }`}
+            <motion.a
+              key={service.title}
+              href={service.href}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className={`group relative overflow-hidden rounded-2xl p-8 border border-border/60 bg-gradient-to-br ${service.accent} to-card hover:border-foreground/30 transition-all duration-300 hover:-translate-y-1`}
             >
-              <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                <service.icon className="w-7 h-7 text-primary" />
+              <div className="w-14 h-14 rounded-xl bg-background/60 flex items-center justify-center mb-6">
+                <service.icon className="w-7 h-7 text-secondary" />
               </div>
-              <h3 className="heading-md text-foreground mb-3 font-display">{service.title}</h3>
-              <p className="text-muted-foreground mb-6 font-sans leading-relaxed text-sm">
-                {service.description}
-              </p>
-              <a href={service.href}>
-                <Button variant="ghost" className="text-primary hover:text-primary p-0 gap-2 group/btn">
-                  Saiba mais
-                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                </Button>
-              </a>
-            </motion.div>
+              <h3 className="heading-md text-foreground mb-3">{service.title}</h3>
+              <p className="text-foreground/70 mb-8 leading-relaxed">{service.description}</p>
+              <span className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-secondary">
+                Saiba mais
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </span>
+            </motion.a>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

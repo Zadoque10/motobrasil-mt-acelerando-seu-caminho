@@ -1,18 +1,38 @@
-import { MessageCircle } from "lucide-react";
-
-const WHATSAPP_URL = "https://wa.me/5565999999999?text=Olá! Gostaria de mais informações sobre os serviços da Motobrasil MT.";
+import { Phone } from "lucide-react";
+import { telLink, waLink } from "@/lib/site";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 
 export function WhatsAppButton() {
   return (
-    <a
-      href={WHATSAPP_URL}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[hsl(142,70%,45%)] hover:bg-[hsl(142,70%,40%)] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 animate-pulse-glow group"
-      aria-label="Falar no WhatsApp"
-      style={{ boxShadow: "0 0 20px hsla(142, 70%, 45%, 0.4)" }}
-    >
-      <MessageCircle className="w-7 h-7 text-[hsl(0,0%,100%)] group-hover:scale-110 transition-transform" />
-    </a>
+    <>
+      {/* Desktop: botão flutuante */}
+      <a
+        href={waLink()}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Falar no WhatsApp"
+        className="hidden md:flex fixed bottom-6 right-6 z-50 w-16 h-16 bg-whatsapp rounded-full items-center justify-center text-white shadow-xl shadow-black/40 hover:scale-105 transition-transform"
+      >
+        <WhatsAppIcon className="w-8 h-8" />
+      </a>
+
+      {/* Mobile: barra fixa */}
+      <div className="md:hidden fixed bottom-0 inset-x-0 z-50 grid grid-cols-2 gap-2 p-3 bg-background/95 backdrop-blur border-t border-border/60">
+        <a
+          href={telLink}
+          className="flex items-center justify-center gap-2 h-12 rounded-md border border-border text-foreground font-bold"
+        >
+          <Phone className="w-4 h-4" /> Ligar
+        </a>
+        <a
+          href={waLink()}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center gap-2 h-12 rounded-md bg-whatsapp text-white font-bold"
+        >
+          <WhatsAppIcon className="w-5 h-5" /> WhatsApp
+        </a>
+      </div>
+    </>
   );
 }

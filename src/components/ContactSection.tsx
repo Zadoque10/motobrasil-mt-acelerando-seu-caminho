@@ -1,96 +1,108 @@
-import { MapPin, Phone, Clock, MessageCircle, Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { MapPin, Phone, Clock, Navigation, Instagram } from "lucide-react";
 import { motion } from "framer-motion";
-
-const WHATSAPP_URL = "https://wa.me/5565999999999?text=Olá! Gostaria de mais informações.";
-
-const contactInfo = [
-  {
-    icon: MapPin,
-    title: "Endereço",
-    lines: ["Av. Gen. Mello, 180 - Dom Aquino", "Cuiabá - MT, 78015-300"],
-  },
-  {
-    icon: Phone,
-    title: "Telefone / WhatsApp",
-    lines: ["(65) 9 9999-9999", "(65) 3333-3333"],
-  },
-  {
-    icon: Clock,
-    title: "Horário de Funcionamento",
-    lines: ["Seg a Sex: 08h às 18h", "Sábado: 08h às 13h"],
-  },
-  {
-    icon: Mail,
-    title: "E-mail",
-    lines: ["contato@motobrasilmt.com.br"],
-  },
-];
+import { SITE, mapsEmbed, mapsLink, telLink, waLink } from "@/lib/site";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 
 export function ContactSection() {
   return (
-    <section id="contato" className="section-padding bg-gradient-dark">
+    <section id="contato" className="section-padding bg-gradient-dark scroll-mt-20">
       <div className="container mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="heading-lg text-foreground mb-4">
-            Entre em <span className="text-gradient">Contato</span>
+        <div className="max-w-2xl mb-12">
+          <span className="eyebrow">Contato</span>
+          <h2 className="heading-lg text-foreground">
+            Passa aqui ou <span className="text-gradient">chama no Zap</span>
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto font-sans">
-            Estamos prontos para atender você. Fale conosco pelo WhatsApp ou visite nossa oficina.
-          </p>
-        </motion.div>
+        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          {/* Contact Info */}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            className="lg:col-span-2 space-y-4"
           >
-            {contactInfo.map((info, i) => (
-              <div key={i} className="flex gap-4 items-start">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <info.icon className="w-5 h-5 text-primary" />
-                </div>
+            <a
+              href={waLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 rounded-2xl bg-whatsapp text-white p-6 hover:brightness-110 transition"
+            >
+              <WhatsAppIcon className="w-9 h-9 shrink-0" />
+              <div>
+                <p className="text-sm uppercase tracking-wider opacity-90">WhatsApp</p>
+                <p className="font-display text-3xl leading-none">{SITE.whatsappDisplay}</p>
+              </div>
+            </a>
+
+            <div className="rounded-2xl border border-border/60 bg-gradient-card divide-y divide-border/60">
+              <a href={telLink} className="flex gap-4 p-5 hover:bg-foreground/5 transition-colors">
+                <Phone className="w-5 h-5 text-secondary mt-0.5 shrink-0" />
                 <div>
-                  <h4 className="font-display text-lg text-foreground mb-1">{info.title}</h4>
-                  {info.lines.map((line, j) => (
-                    <p key={j} className="text-sm text-muted-foreground font-sans">{line}</p>
+                  <p className="font-semibold text-foreground">Telefone</p>
+                  <p className="text-foreground/70">{SITE.phoneDisplay}</p>
+                </div>
+              </a>
+              <a
+                href={mapsLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex gap-4 p-5 hover:bg-foreground/5 transition-colors"
+              >
+                <MapPin className="w-5 h-5 text-secondary mt-0.5 shrink-0" />
+                <div>
+                  <p className="font-semibold text-foreground">Endereço</p>
+                  <p className="text-foreground/70">
+                    {SITE.address.street} — {SITE.address.district}
+                    <br />
+                    {SITE.address.city}-{SITE.address.state}, {SITE.address.zip}
+                  </p>
+                  <span className="inline-flex items-center gap-1 text-sm text-secondary mt-1">
+                    <Navigation className="w-3.5 h-3.5" /> Como chegar
+                  </span>
+                </div>
+              </a>
+              <div className="flex gap-4 p-5">
+                <Clock className="w-5 h-5 text-secondary mt-0.5 shrink-0" />
+                <div>
+                  <p className="font-semibold text-foreground">Horário</p>
+                  {SITE.hours.map((h) => (
+                    <p key={h.days} className="text-foreground/70">
+                      {h.days}: {h.time}
+                    </p>
                   ))}
                 </div>
               </div>
-            ))}
-
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="block pt-4">
-              <Button variant="hero" size="xl" className="gap-2 w-full sm:w-auto">
-                <MessageCircle className="w-5 h-5" />
-                Falar no WhatsApp
-              </Button>
-            </a>
+              <a
+                href={SITE.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex gap-4 p-5 hover:bg-foreground/5 transition-colors"
+              >
+                <Instagram className="w-5 h-5 text-secondary mt-0.5 shrink-0" />
+                <div>
+                  <p className="font-semibold text-foreground">Instagram</p>
+                  <p className="text-foreground/70">{SITE.instagramHandle}</p>
+                </div>
+              </a>
+            </div>
           </motion.div>
 
-          {/* Map */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="rounded-xl overflow-hidden border border-border/50 h-80 lg:h-auto"
+            transition={{ delay: 0.1 }}
+            className="lg:col-span-3 rounded-2xl overflow-hidden border border-border/60 min-h-[360px]"
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3843.5!2d-56.0964!3d-15.5936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x939db1b5a5e4c7d%3A0x0!2sAv.+Gen.+Mello%2C+180+-+Dom+Aquino%2C+Cuiab%C3%A1+-+MT!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
+              src={mapsEmbed}
               width="100%"
               height="100%"
-              style={{ border: 0, minHeight: "320px" }}
+              style={{ border: 0, minHeight: "360px", filter: "invert(0.9) hue-rotate(180deg) saturate(0.8)" }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Localização Motobrasil MT"
+              title="Mapa — Moto Brasil, Av. General Mello, 180, Cuiabá"
             />
           </motion.div>
         </div>

@@ -1,58 +1,62 @@
-import { Package, MessageCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-
-const WHATSAPP_PECAS = "https://wa.me/5565999999999?text=Olá! Gostaria de consultar peças e acessórios.";
+import { waLink } from "@/lib/site";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 
 const parts = [
-  "Filtros de óleo e ar",
-  "Pastilhas de freio",
-  "Correntes e coroas",
+  "Óleo e filtros",
+  "Pastilhas e lonas de freio",
+  "Kit relação",
   "Pneus e câmaras",
   "Baterias",
   "Velas de ignição",
   "Cabos e manetes",
-  "Capacetes e acessórios",
+  "Lâmpadas e piscas",
+  "Retrovisores",
+  "Capacetes",
+  "Baús e bagageiros",
+  "Acessórios em geral",
 ];
 
 export function PartsSection() {
   return (
-    <section id="pecas" className="section-padding bg-background">
+    <section id="pecas" className="section-padding bg-gradient-dark scroll-mt-20">
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-3xl mx-auto text-center"
+          className="rounded-3xl border border-border/60 bg-gradient-to-br from-secondary/10 via-card to-card p-8 md:p-14"
         >
-          <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
-            <Package className="w-8 h-8 text-primary" />
-          </div>
-          <h2 className="heading-lg text-foreground mb-4">
-            Peças e <span className="text-gradient">Acessórios</span>
-          </h2>
-          <p className="text-muted-foreground mb-10 font-sans">
-            Trabalhamos com peças essenciais e acessórios de qualidade para manter sua moto em perfeito funcionamento. 
-            Consulte disponibilidade e valores.
-          </p>
-
-          <div className="flex flex-wrap justify-center gap-3 mb-10">
-            {parts.map((part, i) => (
-              <span
-                key={i}
-                className="bg-card border border-border/50 rounded-full px-5 py-2.5 text-sm text-foreground font-sans hover:border-primary/30 transition-colors"
+          <div className="grid lg:grid-cols-5 gap-10 items-center">
+            <div className="lg:col-span-2">
+              <span className="eyebrow">Balcão de peças</span>
+              <h2 className="heading-lg text-foreground mb-5">
+                Peças e <span className="text-gradient">acessórios</span>
+              </h2>
+              <p className="text-foreground/70 mb-8 leading-relaxed">
+                Manda o modelo e o ano da moto no WhatsApp que a gente confere disponibilidade e preço na hora.
+              </p>
+              <a
+                href={waLink("Olá! Gostaria de consultar uma peça. Minha moto é: ")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 h-14 px-8 rounded-md bg-whatsapp text-white font-bold uppercase tracking-wider hover:brightness-110 transition"
               >
-                {part}
-              </span>
-            ))}
-          </div>
+                <WhatsAppIcon /> Consultar peça
+              </a>
+            </div>
 
-          <a href={WHATSAPP_PECAS} target="_blank" rel="noopener noreferrer">
-            <Button variant="heroOutline" size="xl" className="gap-2">
-              <MessageCircle className="w-5 h-5" />
-              Consultar Peças
-            </Button>
-          </a>
+            <ul className="lg:col-span-3 flex flex-wrap gap-2.5">
+              {parts.map((part) => (
+                <li
+                  key={part}
+                  className="bg-background/60 border border-border/60 rounded-full px-4 py-2.5 text-sm text-foreground"
+                >
+                  {part}
+                </li>
+              ))}
+            </ul>
+          </div>
         </motion.div>
       </div>
     </section>

@@ -1,71 +1,83 @@
-import { Settings, Cog, Zap, Gauge, CircleDot, ShieldCheck, MessageCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Settings, Cog, Zap, Gauge, CircleDot, Link2, Droplets, ClipboardCheck } from "lucide-react";
 import { motion } from "framer-motion";
-
-const WHATSAPP_SERVICO = "https://wa.me/5565999999999?text=Olá! Gostaria de agendar um serviço de mecânica.";
+import { waLink } from "@/lib/site";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 
 const services = [
-  { icon: Settings, label: "Manutenção Preventiva" },
-  { icon: Cog, label: "Manutenção Corretiva" },
-  { icon: Gauge, label: "Diagnóstico Preciso" },
-  { icon: CircleDot, label: "Suspensão e Freios" },
-  { icon: Zap, label: "Parte Elétrica" },
-  { icon: ShieldCheck, label: "Revisão Completa de Motor" },
+  { icon: ClipboardCheck, label: "Revisão completa" },
+  { icon: Droplets, label: "Troca de óleo e filtros" },
+  { icon: CircleDot, label: "Freios" },
+  { icon: Gauge, label: "Suspensão" },
+  { icon: Link2, label: "Kit relação" },
+  { icon: Zap, label: "Parte elétrica" },
+  { icon: Cog, label: "Motor" },
+  { icon: Settings, label: "Diagnóstico" },
+];
+
+const steps = [
+  { n: "01", title: "Chama no WhatsApp", text: "Conta o que a moto está fazendo e marca o melhor horário." },
+  { n: "02", title: "Avaliação", text: "Olhamos a moto e passamos o orçamento antes de mexer em qualquer coisa." },
+  { n: "03", title: "Moto pronta", text: "Serviço feito com peça de qualidade e você avisado quando estiver pronta." },
 ];
 
 export function MechanicsSection() {
   return (
-    <section id="mecanica" className="section-padding bg-gradient-dark relative overflow-hidden">
-      {/* Decorative Element */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+    <section id="oficina" className="section-padding bg-background relative overflow-hidden scroll-mt-20">
+      <div className="absolute -top-40 -right-40 w-[28rem] h-[28rem] bg-primary/10 rounded-full blur-3xl" />
 
       <div className="container mx-auto relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <span className="text-primary font-bold uppercase tracking-widest text-sm mb-3 block font-sans">
-            Mecânica Especializada
-          </span>
-          <h2 className="heading-lg text-foreground mb-4">
-            Autoridade técnica com{" "}
-            <span className="text-gradient">23 anos</span> de experiência
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto font-sans">
-            Nossa equipe altamente qualificada utiliza equipamentos de última geração para oferecer 
-            diagnóstico preciso e soluções eficientes para sua moto.
-          </p>
-        </motion.div>
+        <div className="grid lg:grid-cols-2 gap-14 items-start">
+          <div>
+            <span className="eyebrow">Oficina multimarcas</span>
+            <h2 className="heading-lg text-foreground mb-6">
+              Mecânico de confiança, <span className="text-gradient">sem enrolação</span>
+            </h2>
+            <p className="text-foreground/70 text-lg leading-relaxed mb-10">
+              Honda, Yamaha, Suzuki, Kawasaki e outras marcas. Da troca de óleo à revisão de motor, a gente
+              explica o que precisa ser feito e só faz depois que você aprova.
+            </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-6 mb-12"
-        >
-          {services.map((service, i) => (
-            <div
-              key={i}
-              className="bg-gradient-card border border-border/50 rounded-xl p-6 flex flex-col items-center text-center hover:border-primary/30 transition-all duration-300 group"
+            <ol className="space-y-6 mb-10">
+              {steps.map((s) => (
+                <li key={s.n} className="flex gap-5">
+                  <span className="font-display text-3xl text-secondary leading-none w-10 shrink-0">{s.n}</span>
+                  <div>
+                    <h3 className="font-display text-2xl text-foreground leading-tight">{s.title}</h3>
+                    <p className="text-foreground/65">{s.text}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+
+            <a
+              href={waLink("Olá! Gostaria de agendar um serviço na oficina.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 h-14 px-8 rounded-md bg-whatsapp text-white font-bold uppercase tracking-wider hover:brightness-110 transition"
             >
-              <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                <service.icon className="w-6 h-6 text-primary" />
-              </div>
-              <h4 className="font-display text-lg md:text-xl text-foreground">{service.label}</h4>
-            </div>
-          ))}
-        </motion.div>
+              <WhatsAppIcon /> Agendar serviço
+            </a>
+          </div>
 
-        <div className="text-center">
-          <a href={WHATSAPP_SERVICO} target="_blank" rel="noopener noreferrer">
-            <Button variant="hero" size="xl" className="gap-2">
-              <MessageCircle className="w-5 h-5" />
-              Agendar Serviço
-            </Button>
-          </a>
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="grid grid-cols-2 gap-3 md:gap-4"
+          >
+            {services.map((service) => (
+              <div
+                key={service.label}
+                className="bg-gradient-card border border-border/60 rounded-xl p-5 md:p-6 flex items-center gap-4 hover:border-primary/50 transition-colors"
+              >
+                <div className="w-11 h-11 rounded-lg bg-primary/15 flex items-center justify-center shrink-0">
+                  <service.icon className="w-5 h-5 text-primary-light" />
+                </div>
+                <span className="font-semibold text-foreground text-sm md:text-base">{service.label}</span>
+              </div>
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>

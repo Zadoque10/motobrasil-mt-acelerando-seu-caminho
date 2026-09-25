@@ -15,14 +15,15 @@
     --popover: 0 0% 9%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 140 70% 35%;
+    --primary: 145 72% 36%;
+    --primary-light: 145 65% 52%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 50 95% 50%;
     --secondary-foreground: 0 0% 10%;
 
     --muted: 0 0% 12%;
-    --muted-foreground: 0 0% 55%;
+    --muted-foreground: 0 0% 62%;
 
     --accent: 220 70% 40%;
     --accent-foreground: 0 0% 100%;
@@ -106,8 +107,12 @@
     border: 1px solid hsla(140, 70%, 35%, 0.3);
   }
 
+  .eyebrow {
+    @apply block text-secondary font-bold uppercase tracking-[0.2em] text-xs md:text-sm mb-4;
+  }
+
   .section-padding {
-    @apply py-20 px-4 md:py-28 md:px-8;
+    @apply py-20 md:py-28;
   }
 
   .heading-xl {
