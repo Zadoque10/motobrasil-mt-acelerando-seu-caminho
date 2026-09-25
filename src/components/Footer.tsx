@@ -1,3 +1,4 @@
+import { Lock } from "lucide-react";
 import logo from "@/assets/logo-white.png";
 import { SITE, telLink, waLink } from "@/lib/site";
 
@@ -40,9 +41,17 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-border/60">
-        <p className="container mx-auto px-4 py-5 text-xs text-muted-foreground text-center">
-          © {year} {SITE.fullName}. Cuiabá-MT.
-        </p>
+        <div className="container mx-auto px-4 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
+          <p className="text-center sm:text-left">© {year} {SITE.fullName}. Cuiabá-MT.</p>
+          <a
+            href={SITE.staffLogin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 hover:text-secondary transition-colors"
+          >
+            <Lock className="w-3 h-3" /> Área do funcionário
+          </a>
+        </div>
       </div>
       <div className="h-1 w-full bg-gradient-brasil" />
     </footer>

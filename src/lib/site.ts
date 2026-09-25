@@ -22,6 +22,7 @@ export const SITE = {
   instagram: "https://www.instagram.com/motobrasilmt/",
   instagramHandle: "@motobrasilmt",
   facebook: "https://www.facebook.com/motobrasilmt",
+  staffLogin: "https://www.motobrasil.net:2096/",
 };
 
 export const yearsInBusiness = () => new Date().getFullYear() - SITE.foundedYear;
